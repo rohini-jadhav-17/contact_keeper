@@ -20,3 +20,6 @@ const connectDB = async () =>{
 };
 
 module.exports = connectDB;
+
+// mongodb+srv://rohini17:rohini17@contactkeeper.o6q60.mongodb.net/?retryWrites=true&w=majority
+// mongodb: //localhost:27017
