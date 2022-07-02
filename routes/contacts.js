@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { validationResult, check, body } = require('express-validator');
+const { validationResult, check } = require('express-validator');
 const User = require('../models/User');
 const Contact = require('../models/Contact');
 const auth = require('../middleware/auth');
@@ -10,7 +10,7 @@ const auth = require('../middleware/auth');
 // @acesss  Private
 router.get('/', auth, async (req,res) => {
     try {
-        const contacts = await Contact.find({ user: req.user.id }).sort( { date: -1 });
+        const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1 });
         res.json(contacts);
     } catch (err) {
         console.error(err.message);
@@ -79,7 +79,6 @@ router.put('/:id', auth, async (req,res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-    
 });
 
 // @route   DELETE api/contacts/:id
