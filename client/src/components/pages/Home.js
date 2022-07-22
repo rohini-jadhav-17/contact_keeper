@@ -10,11 +10,18 @@ const Home = () => {
   const navigate = useNavigate();
   
   useEffect(()=> {
-    if (authContext.isAuthenticated) {
-      navigate('/');
-    }
-    authContext.loadUser();
-    
+    // let user;
+    //     authContext.loadUser().then((res) => {
+    //     user = res.data;
+    //     console.log(user);
+    //   });
+      
+    // console.log(authContext.loadUser());
+
+    // if (user) {
+    //   console.log(localStorage.getItem('user'));
+    //   navigate('/');
+    // }   
   }, [])
   return (
     <div className='grid-2'>

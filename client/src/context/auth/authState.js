@@ -18,7 +18,7 @@ import {
 const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
-        isAuthenticated: null,
+        isAuthenticated: true,
         loading: true,
         user: null,
         error: null
@@ -33,7 +33,9 @@ const AuthState = props => {
         
         try {
             const res = await axios.get('/api/auth');
-            // console.log(res.data);
+            console.log(res.data);
+            localStorage.setItem('user', JSON.stringify(res.data));
+            console.log(res.data);
             if(res.data === null) {
                 dispatch({
                     type: LOGOUT
@@ -61,7 +63,7 @@ const AuthState = props => {
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
-            loadUser();
+            // loadUser();
         } catch (err) {
             dispatch({
                 type: REGISTER_FAIL,
